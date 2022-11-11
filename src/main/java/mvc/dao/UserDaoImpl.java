@@ -9,7 +9,7 @@ import javax.persistence.TypedQuery;
 import java.util.List;
 
 @Repository
-public class UserDaoImpl implements UserDao{
+public class UserDaoImpl implements UserDao {
 
     @PersistenceContext
     protected EntityManager entityManager;
@@ -30,7 +30,7 @@ public class UserDaoImpl implements UserDao{
 
     @Override
     public void deleteUser(int id) {
-       entityManager.remove(getUserById(id));
+        entityManager.createQuery("delete from User where id = " + id).executeUpdate();
     }
 
     @Override
